@@ -94,7 +94,8 @@ body {
   
   #question-area {
     padding-left: 10px;
-    padding-right: 10px
+    padding-right: 10px;
+    font-size: 28px;
   }
   
   .message-content {
