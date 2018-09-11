@@ -4,9 +4,9 @@ $(document).ready(function () {
 
     var currentQuestion = 0;
 
-    var rightAnswer = 0;
+    var correct = 0;
 
-    var wrongAnswer = 0;
+    var incorrect = 0;
 
     var unAnswer = 0;
 
@@ -28,7 +28,10 @@ $(document).ready(function () {
                 question: "What is the answer to question 1?",
                 options: ["A", "B", "C", "D"],
                 answer: [true, false, false, false],
-                img: "assets/images/#.png"
+                explainerTrue: ["Correct! The Answer is A!"],
+                explainerFalse: ["Incorrect. The Answer is A!"],
+                explainerTimeout: ["You ran out of time. The Answer is A!"],
+                img: "assets/images/capone.jpg"
 
             },
 
@@ -37,6 +40,9 @@ $(document).ready(function () {
                 question: "What is the answer to question 2?",
                 options: ["A", "B", "C", "D"],
                 answer: [false, true, false, false],
+                explainerTrue: "Correct! The Answer is B!",
+                explainerFalse: "Incorrect. The Answer is B!",
+                explainerTimeout: ["You ran out of time. The Answer is A!"],
                 img: "assets/images/#.png"
 
             },
@@ -46,6 +52,8 @@ $(document).ready(function () {
                 question: "What is the answer to question 3?",
                 options: ["A", "B", "C", "D"],
                 answer: [true, false, false, false],
+                explainerTrue: "Correct! The Answer is A!",
+                explainerFalse: "Incorrect. The Answer is A!",
                 img: "assets/images/#.png"
 
             },
@@ -53,6 +61,7 @@ $(document).ready(function () {
 
         ]
         // var questionArr = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix, questionSeven, questionEight]
+       
 
         var timerId;
         //beginning of game, on click
@@ -65,7 +74,7 @@ $(document).ready(function () {
 
         });
 
-        function timer() {
+       function timer() {
             $(".timer").html("Time remaining: " + " " + counter + " secs");
             counter--;
             if (counter < 0) {
@@ -75,7 +84,7 @@ $(document).ready(function () {
 
 
         }
-
+  
         function displayQuestionAnswers() {
             $("#question-area").html(historyQuestions[currentQuestion].question);
             question++;
@@ -92,8 +101,38 @@ $(document).ready(function () {
               
         $(".answer-button").on("click", function() {
             console.log($(this).attr("value"));
-            
-        });
+       
+        var trueAnswer = historyQuestions[currentQuestion].explainerTrue;
+        var falseAnswer = historyQuestions[currentQuestion].explainerFalse;
+        var timeOutAnswer = historyQuestions[currentQuestion].explainerTimeout;
+        var image = historyQuestions[currentQuestion].img;
+     
+// DISPLAYS CORRECT ANSWER
+        if ($(this).attr("value") === "true") {
+            $("#result").append(trueAnswer)
+            $("#image").append("<img src='" + image + "'>")
+            $("#options").remove();
+            clearInterval(timerId);
+            correct++;
+            // console.log(correct);
+           
+        };
+// DISPALYS INCORRECT ANSWER
+        if ($(this).attr("value") === "false") {
+            $("#result").append(falseAnswer)
+            $("#image").append("<img src='" + image + "'>")
+            $("#options").remove();
+            clearInterval(timerId);
+            incorrect++;
+            // console.log(incorrect);
+           
+        };
+
+   
+        
+        
+
+    });
 
     }
 
