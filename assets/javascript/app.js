@@ -75,16 +75,18 @@ $(document).ready(function () {
 
 
         });
-
+        
         function timer() {
             $(".timer").html("Time remaining: " + " " + counter + " secs");
             counter--;
             // DISPLAYS TIMEOUT ANSWER
             if (counter < 0) {
+                var cycle = setTimeout(displayQuestionAnswers, 3000)
                 $("#options").remove();
                 $("#result").append(historyQuestions[currentQuestion].explainerTimeout)
                 $("#image").append("<img src='" + historyQuestions[currentQuestion].img + "'>")
                 clearInterval(timerId);
+                cycle;
                 notAnswered++;
                 currentQuestion++
                 console.log(notAnswered)
@@ -101,6 +103,7 @@ $(document).ready(function () {
         function displayQuestionAnswers() {
             $("#question-area").html(historyQuestions[currentQuestion].question);
             question++;
+            
 
 
             for (let i = 0; i < historyQuestions[currentQuestion].options.length; i++) {
@@ -112,58 +115,58 @@ $(document).ready(function () {
                 $('#options').append(answerButton);
             }
 
-            $(".answer-button").on("click", function () {
+           $(".answer-button").on("click", function () {
                 console.log($(this).attr("value"));
-
+                // var cycle = setTimeout(displayQuestionAnswers, 3000)
                 var trueAnswer = historyQuestions[currentQuestion].explainerTrue;
                 var falseAnswer = historyQuestions[currentQuestion].explainerFalse;
-
+                
                 var image = historyQuestions[currentQuestion].img;
+                
 
                 // DISPLAYS CORRECT ANSWER
                
-                if ($(this).attr("value") === "true") {
-                   
+              if ($(this).attr("value") === "true") {
+                var cycle = setTimeout(displayQuestionAnswers, 3000)
                     $("#result").append(trueAnswer)
                     
                     $("#image").append("<img src='" + image + "'>")
                     
                     $("#options").remove();
                     clearInterval(timerId);
+                    cycle;
                     correct++;
                     currentQuestion++;
-                    fadeOutAnswer();
+                   
                     // console.log(correct);
 
                 };
                 // DISPALYS INCORRECT ANSWER
             
                 if ($(this).attr("value") === "false") {
+                    var cycle = setTimeout(displayQuestionAnswers, 3000)
                     $("#result").append(falseAnswer)
                    $("#image").append("<img src='" + image + "'>")
                     $("#options").remove();
                     clearInterval(timerId);
+                    cycle;
                     incorrect++;
                     currentQuestion++;
                     // console.log(incorrect);
 
                 }
 
-            
+            timer();
 
 
 
-            });
+            }); /// end of answer=button 
+      
 
-
-        };
-
+        }; /// end of function displayQuestionAnswers
 // NEED CORRECT/INCORRECT/TIMEDOUT FUNCTIONS BELOW THIS AREA
 
 
 
 
-
-
 }); //END OF (document).ready
-
