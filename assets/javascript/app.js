@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     var incorrect = 0;
 
-    var unAnswer = 0;
+    var notAnswered = 0;
 
     var question = 0;
 
@@ -19,9 +19,11 @@ $(document).ready(function () {
     var counter = 3;
 
 
-    function startGame() {
+    
 
         var historyQuestions = [
+
+            
             {
 
 
@@ -61,7 +63,7 @@ $(document).ready(function () {
 
         ]
         // var questionArr = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix, questionSeven, questionEight]
-       
+
 
         var timerId;
         //beginning of game, on click
@@ -74,17 +76,28 @@ $(document).ready(function () {
 
         });
 
-       function timer() {
+        function timer() {
             $(".timer").html("Time remaining: " + " " + counter + " secs");
             counter--;
+            // DISPLAYS TIMEOUT ANSWER
             if (counter < 0) {
+                $("#options").remove();
+                $("#result").append(historyQuestions[currentQuestion].explainerTimeout)
+                $("#image").append("<img src='" + historyQuestions[currentQuestion].img + "'>")
                 clearInterval(timerId);
+                notAnswered++;
+                currentQuestion++
+                console.log(notAnswered)
                 return;
+                
+                
+                
             }
 
 
         }
-  
+
+
         function displayQuestionAnswers() {
             $("#question-area").html(historyQuestions[currentQuestion].question);
             question++;
@@ -98,48 +111,58 @@ $(document).ready(function () {
                 answerButton.attr('id', i);
                 $('#options').append(answerButton);
             }
-              
-        $(".answer-button").on("click", function() {
-            console.log($(this).attr("value"));
-       
-        var trueAnswer = historyQuestions[currentQuestion].explainerTrue;
-        var falseAnswer = historyQuestions[currentQuestion].explainerFalse;
-        var timeOutAnswer = historyQuestions[currentQuestion].explainerTimeout;
-        var image = historyQuestions[currentQuestion].img;
-     
-// DISPLAYS CORRECT ANSWER
-        if ($(this).attr("value") === "true") {
-            $("#result").append(trueAnswer)
-            $("#image").append("<img src='" + image + "'>")
-            $("#options").remove();
-            clearInterval(timerId);
-            correct++;
-            // console.log(correct);
-           
+
+            $(".answer-button").on("click", function () {
+                console.log($(this).attr("value"));
+
+                var trueAnswer = historyQuestions[currentQuestion].explainerTrue;
+                var falseAnswer = historyQuestions[currentQuestion].explainerFalse;
+
+                var image = historyQuestions[currentQuestion].img;
+
+                // DISPLAYS CORRECT ANSWER
+               
+                if ($(this).attr("value") === "true") {
+                   
+                    $("#result").append(trueAnswer)
+                    
+                    $("#image").append("<img src='" + image + "'>")
+                    
+                    $("#options").remove();
+                    clearInterval(timerId);
+                    correct++;
+                    currentQuestion++;
+                    fadeOutAnswer();
+                    // console.log(correct);
+
+                };
+                // DISPALYS INCORRECT ANSWER
+            
+                if ($(this).attr("value") === "false") {
+                    $("#result").append(falseAnswer)
+                   $("#image").append("<img src='" + image + "'>")
+                    $("#options").remove();
+                    clearInterval(timerId);
+                    incorrect++;
+                    currentQuestion++;
+                    // console.log(incorrect);
+
+                }
+
+            
+
+
+
+            });
+
+
         };
-// DISPALYS INCORRECT ANSWER
-        if ($(this).attr("value") === "false") {
-            $("#result").append(falseAnswer)
-            $("#image").append("<img src='" + image + "'>")
-            $("#options").remove();
-            clearInterval(timerId);
-            incorrect++;
-            // console.log(incorrect);
-           
-        };
 
-   
-        
-        
-
-    });
-
-    }
+// NEED CORRECT/INCORRECT/TIMEDOUT FUNCTIONS BELOW THIS AREA
 
 
-    }; //END OF startGame();
 
-    startGame();
+
 
 
 }); //END OF (document).ready
