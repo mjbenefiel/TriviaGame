@@ -11,6 +11,7 @@ $(document).ready(function () {
     var notAnswered = 0;
 
     var question = 0;
+    var options = 0;
 
     var images;
 
@@ -40,12 +41,12 @@ $(document).ready(function () {
             {
 
                 question: "What is the answer to question 2?",
-                options: ["A", "B", "C", "D"],
+                options: ["E", "F", "G", "H"],
                 answer: [false, true, false, false],
                 explainerTrue: "Correct! The Answer is B!",
                 explainerFalse: "Incorrect. The Answer is B!",
                 explainerTimeout: ["You ran out of time. The Answer is A!"],
-                img: "assets/images/#.png"
+                img: "assets/images/#.jpg"
 
             },
 
@@ -103,9 +104,12 @@ $(document).ready(function () {
         function displayQuestionAnswers() {
             $("#question-area").html(historyQuestions[currentQuestion].question);
             question++;
+             
+          
+            
             
 
-
+    
             for (let i = 0; i < historyQuestions[currentQuestion].options.length; i++) {
                 var answerButton = $('<button>');
                 answerButton.html(historyQuestions[currentQuestion].options[i]);
@@ -113,8 +117,10 @@ $(document).ready(function () {
                 answerButton.attr('value', historyQuestions[currentQuestion].answer[i]);
                 answerButton.attr('id', i);
                 $('#options').append(answerButton);
+                options++;
             }
-
+    
+            
            $(".answer-button").on("click", function () {
                 console.log($(this).attr("value"));
                 // var cycle = setTimeout(displayQuestionAnswers, 3000)
@@ -141,6 +147,7 @@ $(document).ready(function () {
                     // console.log(correct);
 
                 };
+                
                 // DISPALYS INCORRECT ANSWER
             
                 if ($(this).attr("value") === "false") {
@@ -148,20 +155,24 @@ $(document).ready(function () {
                     $("#result").append(falseAnswer)
                    $("#image").append("<img src='" + image + "'>")
                     $("#options").remove();
+                    
                     clearInterval(timerId);
                     cycle;
                     incorrect++;
                     currentQuestion++;
                     // console.log(incorrect);
 
-                }
+                };
+             var timeoutFunction =  setTimeout(function(){ 
+                $("#image").hide();
+                $("#result").hide();
+               
 
-            timer();
-
+            }, 3000);
 
 
             }); /// end of answer=button 
-      
+        
 
         }; /// end of function displayQuestionAnswers
 // NEED CORRECT/INCORRECT/TIMEDOUT FUNCTIONS BELOW THIS AREA
