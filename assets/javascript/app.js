@@ -1,183 +1,259 @@
-$(document).ready(function () {
-
-    var contestant;
-
+$(document).ready( function() {
+    // Declare objects (actual trivia questions) in an array of objects
+    var questions = [
+      {
+        question: "This film, released in 1958 and directed by Akira Kurosawa, is considered one of the greatest inspirations for George Lucas' Star Wars: Episode IV - A New Hope.",
+        answers: ["The Hidden Fortress", "Seven Samurai", "Rashomon", "Tokyo Story"],
+        values: [true, false, false, false],
+        detail: "While The Hidden Fortress is a story about a princess and her protectors, George Lucas has stated that he was more interested in how the story was told through the eyes of two lesser characters. In The Hidden Fortress it is the two thieves. In Star Wars C3PO and R2D2 fill these roles.",
+        gif: "assets/images/hidden-fortress.gif",
+      },
+      {
+        question: "What is the name of the Japanese film genre that was originally popularized by the film Godzilla? In English, this term can be translated as 'strange beast'.",
+        answers: ["Yokai", "Yakuza", "Kaiju", "Anime"],
+        values: [false, false, true, false],
+        detail: "The genre generally features giant monsters attacking major cities and battling with the local military and sometimes other giant monsters. In the original film, Godzilla was meant to be a metaphor for nuclear weapons and their destructive capability.",
+        gif: "assets/images/godzilla.gif",
+      },
+      {
+        question: "This \"dynamic and ferocious\" actor is most famous for his work with director Akira Kurosawa in such movies as Rashomon, Yojimbo, and Seven Samurai.",
+        answers: ["Takeshi Shimura", "Toshiro Mifune", "Hayao Miyazaki", "Tatsuya Nakadai"],
+        values: [false, true, false, false],
+        detail: "Toshiro Mifune was considered the most famous Japanese actor of his age. He appeared in 170 feature films, but is best known for the 16 he made with Akira Kurosawa.",
+        gif: "assets/images/mifune.gif",
+      },
+      {
+        question: "This animated film made in 2001 by Studio Ghibli is the highest grossing film in Japan.",
+        answers: ["Princess Monoke", "My Neighbor Totoro", "Howl's Moving Castle", "Spirited Away"],
+        values: [false, false, false, true],
+        detail: "Spirited Away even overtook Titanic in Japan, with a total gross of over 30 billion yen.",
+        gif: "assets/images/spirited-away1.gif",
+      },
+      {
+        question: "In the 1980 film Kagemusha, what does the term \"kagemusha\" refer to?",
+        answers: ["Political Decoy", "Peasant", "Masterless Samurai", "Assassin"],
+        values: [true, false, false, false],
+        detail: "In the film a lowly thief is used to impersonate a dying warlord to fool his enemies.",
+        gif: "assets/images/kagemusha.gif",
+      }]
+  
+    // Very important for tracking questions. This will track the player's progress through the questions. When this value is equal to questions.length - 1 the score screen will appear
     var currentQuestion = 0;
-
-    var correct = 0;
-
-    var incorrect = 0;
-
-    var notAnswered = 0;
-
-    var question = 0;
-    var options = 0;
-
-    var images;
-
-    var questions = null;
-    var answers = null;
-    var counter = 3;
-
-
+    var correct = 0; //records number of correct answers
+    var wrong = 0; //records number of wrong answers
+    var none = 0; //records unanswered (timed out) questions
+  
+    // End variable area
+    //-----------------------------------------------------------------------------------
+    // Functions below
+  
+    // On-click start function
+    $("#start").on("click", function() {
+     $("#start").remove();
+     displayQ();
     
+    })
+  
+  
+  
+    // This function will display the timer, question, and 
+    function displayQ() {
+      // Removes the prior message
+      $(".message-content").remove();
+      $(".intro").remove();
 
-        var historyQuestions = [
-
-            
-            {
-
-
-                question: "What is the answer to question 1?",
-                options: ["A", "B", "C", "D"],
-                answer: [true, false, false, false],
-                explainerTrue: ["Correct! The Answer is A!"],
-                explainerFalse: ["Incorrect. The Answer is A!"],
-                explainerTimeout: ["You ran out of time. The Answer is A!"],
-                img: "assets/images/capone.jpg"
-
-            },
-
-            {
-
-                question: "What is the answer to question 2?",
-                options: ["E", "F", "G", "H"],
-                answer: [false, true, false, false],
-                explainerTrue: "Correct! The Answer is B!",
-                explainerFalse: "Incorrect. The Answer is B!",
-                explainerTimeout: ["You ran out of time. The Answer is A!"],
-                img: "assets/images/#.jpg"
-
-            },
-
-            {
-
-                question: "What is the answer to question 3?",
-                options: ["A", "B", "C", "D"],
-                answer: [true, false, false, false],
-                explainerTrue: "Correct! The Answer is A!",
-                explainerFalse: "Incorrect. The Answer is A!",
-                img: "assets/images/#.png"
-
-            },
-
-
-        ]
-        // var questionArr = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix, questionSeven, questionEight]
-
-
-        var timerId;
-        //beginning of game, on click
-        $("#start").on("click", function () {
-            $(this).hide();
-            timerId = setInterval(timer, 1000)
-            displayQuestionAnswers();
-            timer();
-
-
-        });
-        
-        function timer() {
-            $(".timer").html("Time remaining: " + " " + counter + " secs");
-            counter--;
-            // DISPLAYS TIMEOUT ANSWER
-            if (counter < 0) {
-                var cycle = setTimeout(displayQuestionAnswers, 3000)
-                $("#options").remove();
-                $("#result").append(historyQuestions[currentQuestion].explainerTimeout)
-                $("#image").append("<img src='" + historyQuestions[currentQuestion].img + "'>")
-                clearInterval(timerId);
-                cycle;
-                notAnswered++;
-                currentQuestion++
-                console.log(notAnswered)
-                return;
-                
-                
-                
-            }
-
-
+      // Create the html elements that will constitute the timer, question, and later, the answer area. These are all assigned to a proper variable name
+      var questionArea = $("<div>");
+      questionArea.attr("id", "question-area")
+      var timer = $("<h2>")
+      var question = $("<h2>")
+  
+      // Append elements to the content area, so they display properly
+      questionArea.appendTo("#content")
+      timer.appendTo(questionArea)
+      question.appendTo(questionArea)
+  
+      // Set up the timer.
+      var time = 5;
+      timer.html("<h2>" + time + " seconds remaining</h2>")
+      
+      // Countdown function that will stop when the time hits 0
+      var countDown = setInterval( function() {
+        time--;
+        timer.html("<h2>" + time + " seconds remaining</h2>")
+  
+        // If time reaches 0, the question times out, none increases in value, and the timedOut function is called
+        if (time === 0) {
+          clearInterval(countDown)
+          questionArea.hide();
+          timedOut();
+          none++;
         }
-
-
-        function displayQuestionAnswers() {
-            $("#question-area").html(historyQuestions[currentQuestion].question);
-            question++;
-             
-          
-            
-            
-
+      }, 1000);
+  
+      // Display the question. I'm using the currenQuestion value to reach into the array of objects and pull the proper question.
+      question.html(questions[currentQuestion].question)
+  
+      // Display the answers as list items using a for loop
+      for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
+        var answers = $("<button>")
+        answers.html(questions[currentQuestion].answers[i])
+        answers.addClass("answer-buttons")
+        answers.attr("value", questions[currentQuestion].values[i])
+        answers.attr("id", "a" + i)
+        answers.appendTo(questionArea)
+      };
+  
     
-            for (let i = 0; i < historyQuestions[currentQuestion].options.length; i++) {
-                var answerButton = $('<button>');
-                answerButton.html(historyQuestions[currentQuestion].options[i]);
-                answerButton.addClass("answer-button");
-                answerButton.attr('value', historyQuestions[currentQuestion].answer[i]);
-                answerButton.attr('id', i);
-                $('#options').append(answerButton);
-                options++;
-            }
-    
-            
-           $(".answer-button").on("click", function () {
-                console.log($(this).attr("value"));
-                // var cycle = setTimeout(displayQuestionAnswers, 3000)
-                var trueAnswer = historyQuestions[currentQuestion].explainerTrue;
-                var falseAnswer = historyQuestions[currentQuestion].explainerFalse;
-                
-                var image = historyQuestions[currentQuestion].img;
-                
-
-                // DISPLAYS CORRECT ANSWER
-               
-              if ($(this).attr("value") === "true") {
-                var cycle = setTimeout(displayQuestionAnswers, 3000)
-                    $("#result").append(trueAnswer)
-                    
-                    $("#image").append("<img src='" + image + "'>")
-                    
-                    $("#options").remove();
-                    clearInterval(timerId);
-                    cycle;
-                    correct++;
-                    currentQuestion++;
-                   
-                    // console.log(correct);
-
-                };
-                
-                // DISPALYS INCORRECT ANSWER
-            
-                if ($(this).attr("value") === "false") {
-                    var cycle = setTimeout(displayQuestionAnswers, 3000)
-                    $("#result").append(falseAnswer)
-                   $("#image").append("<img src='" + image + "'>")
-                    $("#options").remove();
-                    
-                    clearInterval(timerId);
-                    cycle;
-                    incorrect++;
-                    currentQuestion++;
-                    // console.log(incorrect);
-
-                };
-             var timeoutFunction =  setTimeout(function(){ 
-                $("#image").hide();
-                $("#result").hide();
-               
-
-            }, 3000);
-
-
-            }); /// end of answer=button 
-        
-
-        }; /// end of function displayQuestionAnswers
-// NEED CORRECT/INCORRECT/TIMEDOUT FUNCTIONS BELOW THIS AREA
-
-
-
-
-}); //END OF (document).ready
+  
+  
+  
+      // If and else if statements to determine what happens, depending on correct answer clicked, or incorrect
+      // First, the click cases
+      $(".answer-buttons").on("click", function() {
+        //checking value of 'this'
+        console.log($(this).attr("value"));
+  
+        // If the value is true, clear the content area, stop the counter, and display the correct answer screen
+        if ($(this).attr("value") === "true") {
+          questionArea.hide();
+          displayCorrect();
+          clearInterval(countDown);
+          correct++;
+        };
+        // If false, clear content area, stop counter, and display wrong answer screen
+        if ($(this).attr("value") === "false") {
+          questionArea.hide();
+          displayWrong();
+          clearInterval(countDown)
+          wrong++;
+        };
+      });
+    };
+  
+    //------------------------------------------------------------------------------------------
+    // Block of post-question displays (what shows up when you click or time out)
+  
+    // This function will display the correct answer screen
+    function displayCorrect() {
+      var cycle = setTimeout(displayQ, 3000)
+      var messageArea = $("<div>");    
+      messageArea.addClass("message-content")
+      // Declare content that will go into the messageArea
+      var winMessage = $("<h2>");
+      var detail = $("<h2>")
+      var image = $("<img>")
+      // Append it all to the content container and add text and images
+      messageArea.appendTo($("#content"));
+      winMessage.appendTo($(messageArea));
+      detail.appendTo($(messageArea))
+      image.appendTo($(messageArea))
+      winMessage.text("Correct!");
+      detail.text(questions[currentQuestion].detail)
+      image.attr("src", questions[currentQuestion].gif)
+  
+  
+      // If there are no questions left, then run this function to display gameOver
+      if (currentQuestion === (questions.length - 1)) {
+        clearTimeout(cycle);
+        var gameEnd = setTimeout( gameOver, 10000)
+      }
+      currentQuestion++;
+    };
+    // This function will display the wrong answer screen
+    function displayWrong() {
+      var cycle = setTimeout(displayQ, 3000);
+      var messageArea = $("<div>");
+      messageArea.addClass("message-content")
+      var lossMessage = $("<h2>");
+      var detail = $("<h2>")
+      var image = $("<img>")
+      // Append it all to the content container and add text and images
+      messageArea.appendTo($("#content"));
+      lossMessage.appendTo(messageArea)
+      detail.appendTo($(messageArea))
+      image.appendTo($(messageArea))
+      lossMessage.html("Wrong! The right answer was: " + questions[currentQuestion].answers[questions[currentQuestion].values.indexOf(true)]);
+      detail.text(questions[currentQuestion].detail)
+      image.attr("src", questions[currentQuestion].gif)
+  
+      // If there are no questions left, then run this function to display gameOver
+      if (currentQuestion === (questions.length - 1)) {
+        clearTimeout(cycle);
+        var gameEnd = setTimeout( gameOver, 10000)
+      }
+      currentQuestion++;
+    };
+  
+    // This will display the time out screen
+    function timedOut() {
+      var cycle = setTimeout(displayQ, 10000);
+      var messageArea = $("<div>");
+      messageArea.addClass("message-content")
+      var lossMessage = $("<h2>");
+      var detail = $("<h2>")
+      var image = $("<img>")
+      // Append it all to the content container and add text and images
+      messageArea.appendTo($("#content"));
+      lossMessage.appendTo(messageArea)
+      detail.appendTo($(messageArea))
+      image.appendTo($(messageArea))
+      lossMessage.html("You timed out! The right answer was: " + questions[currentQuestion].answers[questions[currentQuestion].values.indexOf(true)]);
+      detail.text(questions[currentQuestion].detail)
+      image.attr("src", questions[currentQuestion].gif)
+  
+      // If there are no questions left, then run this function to display gameOver
+      if (currentQuestion === (questions.length - 1)) { 
+        clearTimeout(cycle);
+        var gameEnd = setTimeout( gameOver, 10000)
+      }
+      currentQuestion++;
+    };
+  
+    // This will display when the currentQuestion amount is equal to questions.length - 1. In other words, when all questions have been answered
+    function gameOver() {
+      // Clear out the post-question message
+      $(".message-content").remove();
+      var totalCorrect = $("<h3>")
+      var totalIncorrect = $("<h3>")
+      var totalNone = $("<h3>")
+      var restart = $("<button>")
+      totalCorrect.appendTo($("#content"))
+      totalCorrect.html("You got " + correct + " correct!")
+      totalIncorrect.appendTo("#content")
+      totalIncorrect.html("You got " + wrong + " wrong.")
+      totalNone.appendTo("#content")
+      
+      // If block to determine if question or questions should be used
+      if (none === 1) {
+        totalNone.html("You didn't answer " + none + " question.")
+      }
+      if (none > 1 || none === 0) {
+        totalNone.html("You didn't answer " + none + " questions.")
+      }
+      
+      
+      // Restart button
+      restart.addClass("restart")
+      restart.text("Restart")
+      restart.appendTo($("#content"))
+  
+      //Reset button onclick function
+      $(".restart").on("click", function() {
+        totalCorrect.remove();
+        totalIncorrect.remove();
+        totalNone.remove();
+        restart.remove();
+        currentQuestion = 0;
+        correct = 0; //records number of correct answers
+        wrong = 0; //records number of wrong answers
+        none = 0;
+        displayQ();
+      })
+  
+    }
+  
+  })
+  
+  
+  

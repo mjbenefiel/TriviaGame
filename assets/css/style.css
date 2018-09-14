@@ -1,15 +1,37 @@
+.row, html {
+	height: 100%;
+	width: cover;
+	 background:   linear-gradient(
+	   rgba(26, 25, 25, 0.801), 
+	   rgba(26, 25, 25, 0.801)
+	 ), url("../images/noir.jpg") no-repeat center center fixed; 
+	 -webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+	 background-size: cover;
+	 
+	   
+   }
+
 body {
-    /* background-image: url("../images/sayagata-400px/sayagata-400px.png"); */
-    font-family: 'Special Elite', cursive;
+   
+  font-family: 'Limelight', cursive;
+    margin: 0;
+    padding: 0;
+  }
+  .container-fluid {
+    margin: 0;
+    padding-right: 0;
+    border: none;
   }
   
   h1 {
     font-weight: bold;
-    font-family: 'Special Elite', cursive;
+    font-family: 'Limelight', cursive;
     width: 100%;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border-bottom: 5px #8b1616 solid;
+     border-top-left-radius: 25px; 
+     border-top-right-radius: 25px; 
+     border-bottom: 5px #8b1616 solid;
     padding-top: 20px;
     padding-bottom: 10px;
     margin-top: 0px;
@@ -18,12 +40,12 @@ body {
 
   .timer {
     font-weight: bold;
-    font-family: 'Special Elite', cursive;
+    font-family: 'Limelight', cursive;
     font-size: 28px;
     width: 100%;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    border-bottom: 5px #8b1616 solid;
+    /* border-bottom: 5px #8b1616 solid; */
     padding-top: 20px;
     padding-bottom: 10px;
     margin-top: 0px;
@@ -33,7 +55,7 @@ body {
   img {
     height: 250px;
     width: 300px;
-    border: 2px #416788 solid;
+    /* border: 2px #416788 solid; */
     border-radius: 25px;
   }
   
@@ -60,29 +82,29 @@ body {
     height: 75px;
     width: 200px;
     font-size: 48px !important;
-    font-family: 'Special Elite', cursive;
+    font-family: 'Space Mono', monospace;
   }
   
   #content {
-    /*background-image: url("../images/wave-off-kanagawa.jpg");
+    /* background-image: url("../images/noir.jpg"); */
     background-size: 100% 100%;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat; 
     position: relative;
-    color: black;
+    color: white;
     height: 600px;
-    border: 5px #8b1616 solid;
+    /* border: 5px #8b1616 solid; */
     border-radius: 25px;
     margin: 50px auto;
     text-align: center;
-    box-shadow: 3px 3px 20px 6px #ccc !important;
+    /* box-shadow: 3px 3px 20px 6px #ccc !important; */
     padding-bottom: 20px;
   }
   
   #content::after {
     content: "";
-    background-image: url("../images/#.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    /* background-image: url("../images/noir.jpg");  */
+    background-size: 100% 100%; 
+    background-repeat: no-repeat; 
     position: absolute;
     top: 0;
     bottom: 0;
