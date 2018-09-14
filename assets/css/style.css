@@ -17,7 +17,8 @@ body {
    
   font-family:Open Sans;
     margin: 0;
-    padding-bottom: 25px;
+    /* padding-bottom: 25px; */
+    
   }
   .container-fluid {
     margin: 0;
@@ -68,11 +69,13 @@ body {
   }
   
   button {
+    font-family:Open Sans;
+    font-style: bold;
     display: block;
-    margin: 20px auto;
+    margin: 25px auto;
     background-color:#78C0A8;
     color: white;
-    font-size: 20px !important;
+    font-size: 24px !important;
     border-radius: 4px;
   }
   
@@ -80,7 +83,7 @@ body {
     transform: scale(1.1);
     /* border: 1px blue solid; */
     box-shadow: 0 0 1rem #81D2C7;
-    background-color: #81D2C7;
+    background-color: rgb(10, 102, 90);
     color: white;
   }
   
