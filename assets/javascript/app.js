@@ -1,41 +1,51 @@
 $(document).ready( function() {
-    // Declare objects (actual trivia questions) in an array of objects
+    // Trivia questions and details
     var questions = [
       {
-        question: "This film, released in 1958 and directed by Akira Kurosawa, is considered one of the greatest inspirations for George Lucas' Star Wars: Episode IV - A New Hope.",
-        answers: ["The Hidden Fortress", "Seven Samurai", "Rashomon", "Tokyo Story"],
+        question: "What year was Gone with the Wind released?",
+        answers: ["1939", "1944", "1949", "1955"],
         values: [true, false, false, false],
-        detail: "While The Hidden Fortress is a story about a princess and her protectors, George Lucas has stated that he was more interested in how the story was told through the eyes of two lesser characters. In The Hidden Fortress it is the two thieves. In Star Wars C3PO and R2D2 fill these roles.",
-        gif: "assets/images/hidden-fortress.gif",
+        detail: "The original director, George Cukor, was fired 18 days into shooting and was quickly replaced by Victor Fleming (who'd also directed The Wizard of Oz). In the thick of production, Fleming allegedly experienced a mental breakdown, and after threatening to drive his car off a cliff, took time off. During the interim, Sam Wood took the reins until Fleming recovered from his exhaustion. The final tally? Cukor, 18 days, Fleming, 93 and Wood, 24.",
+        gif: "assets/images/question1.jpg",
       },
       {
-        question: "What is the name of the Japanese film genre that was originally popularized by the film Godzilla? In English, this term can be translated as 'strange beast'.",
-        answers: ["Yokai", "Yakuza", "Kaiju", "Anime"],
+        question: "Citizen Kane was actually based on the real life of a tycoon. Which one?",
+        answers: ["William Randolph Hearst", "Howard Hughes", "Thomas M. Carnegie", "J.D. Rockefeller"],
+        values: [true, false, false, false],
+        detail: "Orson Welles’ commitment to his performance as Charles Foster Kane meant that he poured tremendous energy into the role, sometimes at the risk of his own wellbeing. During the scene in which Kane rampages through Susan’s room, smashing furniture and ripping things off the walls, he badly cut his left hand. Then, during the scene in which Kane confronts Boss Jim Gettys (Ray Collins) on a staircase, Welles fell and injured his ankle so badly that he was forced to reschedule certain scenes and direct the film from a wheelchair for several days.",
+        gif: "assets/images/question2.jpg",
+      },
+      {
+        question: "Lawrence of Arabia is considered one of the greatest classic films. Who played the title role?",
+        answers: ["Richard Harris", "Richard Burton", "Peter O'Toole", "Laurence Olivier"],
         values: [false, false, true, false],
-        detail: "The genre generally features giant monsters attacking major cities and battling with the local military and sometimes other giant monsters. In the original film, Godzilla was meant to be a metaphor for nuclear weapons and their destructive capability.",
-        gif: "assets/images/godzilla.gif",
+        detail: "While six-foot, three-inch Peter O’Toole cut a towering figure as the lead in the 1962 epic biopic 'Lawrence of Arabia,' the real Lawrence was only five feet, five inches tall. Lawrence remained self-conscious about his height, which may have been caused by a childhood case of the mumps.",
+        gif: "assets/images/question3.png",
       },
       {
-        question: "This \"dynamic and ferocious\" actor is most famous for his work with director Akira Kurosawa in such movies as Rashomon, Yojimbo, and Seven Samurai.",
-        answers: ["Takeshi Shimura", "Toshiro Mifune", "Hayao Miyazaki", "Tatsuya Nakadai"],
-        values: [false, true, false, false],
-        detail: "Toshiro Mifune was considered the most famous Japanese actor of his age. He appeared in 170 feature films, but is best known for the 16 he made with Akira Kurosawa.",
-        gif: "assets/images/mifune.gif",
-      },
-      {
-        question: "This animated film made in 2001 by Studio Ghibli is the highest grossing film in Japan.",
-        answers: ["Princess Monoke", "My Neighbor Totoro", "Howl's Moving Castle", "Spirited Away"],
+        question: "2001: A Spacey Odyssey was based on a book. Who wrote that book?",
+        answers: ["Jules Verne", "H.G. Wells", "Douglas Adams", "Arthur C. Clarke"],
         values: [false, false, false, true],
-        detail: "Spirited Away even overtook Titanic in Japan, with a total gross of over 30 billion yen.",
-        gif: "assets/images/spirited-away1.gif",
+        detail: "The only on-location exterior shot of the movie was of the Moon-Watcher ape smashing the animal bones with his own bone weapon, which was shot on an elevated platform near the studio so that Kubrick could get a low angle of actor Dan Richter, who played the Moon-Watcher, tossing the bone into the air.",
+        gif: "assets/images/question4.jpg",
       },
       {
-        question: "In the 1980 film Kagemusha, what does the term \"kagemusha\" refer to?",
-        answers: ["Political Decoy", "Peasant", "Masterless Samurai", "Assassin"],
+        question: "This film opens with a famous shot of an eye being sliced open.",
+        answers: ["Un Chien Andalou", "One Flew Over the Cuckcoo's Nest", "A Clockwork Orange", "Throne of Blood"],
         values: [true, false, false, false],
-        detail: "In the film a lowly thief is used to impersonate a dying warlord to fool his enemies.",
-        gif: "assets/images/kagemusha.gif",
-      }]
+        detail: "Luis Buñuel told Salvador Dalí about a dream in which a cloud sliced the moon in half 'like a razor blade slicing through an eye.' Dalí responded that he'd dreamt about a hand crawling with ants. Out of these two dreams this film was born.",
+        gif: "assets/images/question5.jpg",
+      },
+
+      {
+        question: "In the movie 'E.T.' the title character leaves his friend Elliot. What does he say?",
+        answers: ["Phone home", "I'll be right here", "BRB going to the Moon", "I'll be right back"],
+        values: [false, true, false, false],
+        detail: "Most of the script was written while filming Raiders of the Lost Ark. Spielberg dictated the story to screenwriter Melissa Mathison, who was the then-girlfriend and future wife of Harrison Ford.",
+        gif: "assets/images/question6.png",
+      },
+    
+    ]
   
     // Very important for tracking questions. This will track the player's progress through the questions. When this value is equal to questions.length - 1 the score screen will appear
     var currentQuestion = 0;

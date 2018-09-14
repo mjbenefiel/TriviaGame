@@ -69,14 +69,16 @@ body {
   }
   
   button {
-    font-family:Open Sans;
+    font-family: 'Space Mono', monospace;
     font-style: bold;
     display: block;
     margin: 25px auto;
+    padding: 2px 10px 2px 10px;
     background-color:#78C0A8;
     color: white;
     font-size: 24px !important;
-    border-radius: 4px;
+    border-radius: 15px;
+    width: auto;
   }
   
   button:hover {
@@ -91,7 +93,7 @@ body {
    background-color: #78C0A8;
    border: none;
    margin: 50px 0px 0px 40px;
-   
+   border-radius:15px;
 
     vertical-align: center;
     /* transform: translate(0, 150%); */
