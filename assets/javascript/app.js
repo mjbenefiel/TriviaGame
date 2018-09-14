@@ -60,7 +60,7 @@ $(document).ready( function() {
     function displayQ() {
       // Removes the prior message
       $(".message-content").remove();
-      $(".intro").remove();
+      $("blockquote").remove();
 
       // Create the html elements that will constitute the timer, question, and later, the answer area. These are all assigned to a proper variable name
       var questionArea = $("<div>");

@@ -15,9 +15,9 @@
 
 body {
    
-  font-family: 'Limelight', cursive;
+  font-family:Open Sans;
     margin: 0;
-    padding: 0;
+    padding-bottom: 25px;
   }
   .container-fluid {
     margin: 0;
@@ -25,31 +25,39 @@ body {
     border: none;
   }
   
-  h1 {
+/* h1 {
     font-weight: bold;
     font-family: 'Limelight', cursive;
     width: 100%;
      border-top-left-radius: 25px; 
      border-top-right-radius: 25px; 
-     border-bottom: 5px #8b1616 solid;
+     border-bottom: 5px white solid;
     padding-top: 20px;
     padding-bottom: 10px;
     margin-top: 0px;
-    margin-bottom: 0px
-  }
+    margin-bottom: 0px;
+   
+    
+  } */
+
+.wrapper {
+  padding-top: 135px;
+}
+  
+
 
   .timer {
     font-weight: bold;
-    font-family: 'Limelight', cursive;
-    font-size: 28px;
+    font-family:Open Sans;
+    font-size: 16px;
     width: 100%;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     /* border-bottom: 5px #8b1616 solid; */
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 0;
+    padding-bottom: 25px;
     margin-top: 0px;
-    margin-bottom: 0px
+    margin-bottom: 25px
   }
   
   img {
@@ -61,8 +69,8 @@ body {
   
   button {
     display: block;
-    margin: 10px auto;
-    background-color: #416788;
+    margin: 20px auto;
+    background-color:#78C0A8;
     color: white;
     font-size: 20px !important;
     border-radius: 4px;
@@ -70,19 +78,26 @@ body {
   
   button:hover {
     transform: scale(1.1);
-    border: 3px black solid;
+    /* border: 1px blue solid; */
     box-shadow: 0 0 1rem #81D2C7;
     background-color: #81D2C7;
-    color: black;
+    color: white;
   }
   
   #start {
+   background-color: #78C0A8;
+   border: none;
+   margin: 50px 0px 0px 40px;
+   
+
     vertical-align: center;
-    transform: translate(0, 150%);
-    height: 75px;
+    /* transform: translate(0, 150%); */
+    height: 95px;
     width: 200px;
     font-size: 48px !important;
     font-family: 'Space Mono', monospace;
+
+    
   }
   
   #content {
@@ -97,7 +112,8 @@ body {
     margin: 50px auto;
     text-align: center;
     /* box-shadow: 3px 3px 20px 6px #ccc !important; */
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
+    
   }
   
   #content::after {
@@ -115,17 +131,71 @@ body {
   }
   
   #question-area {
+    font-family:Open Sans;
+    font-style: italic;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 28px;
+    
+    
+   
   }
   
+h2 {
+  font-family:Open Sans;
+  font-size: 1.5em;
+  padding-bottom: 10px;
+}
+
   .message-content {
+    font-family:Open Sans;
+    font-style: italic;
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 25px;
   }
   
   
+/* block quote */
+blockquote{
+  font-size: 1.4em;
+  width:80%;
+  margin: auto;
+    
+  font-family:Open Sans;
+  font-style:italic;
+  color: white;
+  padding:10px 30px 0px 75px;
+  border-left:4px solid #78C0A8 ;
+  line-height:1.6;
+  position: relative;
+  border: none;
+}
+
+blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#78C0A8;
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-30px;
+}
+
+blockquote::after{
+  content: '';
+}
+
+blockquote span{
+  display:block;
+  color:white;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}
+
+
+
+
   /* For smaller screens */
   @media screen and (max-width: 640px) {
     #content {
@@ -137,3 +207,77 @@ body {
       width: 250px;
     }
   }
+
+ 
+/*  Basic Title  */
+h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: 'Limelight', cursive;
+  font-weight: 100;
+  font-size: 3em;
+  text-align: center;
+  color: #fff;
+  -webkit-animation: 3s fade;
+  animation: 3s fade;
+  padding-bottom: 50px;
+ 
+}
+h1 span {
+  display: inline-block;
+  position: relative;
+  padding: .5em 1em;
+  width: 100%;
+}
+h1 span:before {
+  display: block;
+  content: '';
+  width: 110%;
+  margin-left: -5%;
+  margin-bottom: 3%;
+  margin-top: -10%;
+  padding-bottom: -25%;
+  border-top: 1px solid #fff;
+  -webkit-animation: 2.5s draw;
+  animation: 2.5s draw;
+}
+h1 span:after {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  border-bottom: 1px solid #fff;
+  -webkit-animation: 2.5s draw-bottom;
+  animation: 2.5s draw-bottom;
+}
+
+
+/* Simple Title Animation */
+@keyframes draw {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 110%;
+  }
+}
+@keyframes draw-bottom {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
