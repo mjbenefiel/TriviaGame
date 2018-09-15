@@ -2,7 +2,7 @@ $(document).ready( function() {
     // Trivia questions and details
     var questions = [
       {
-        question: "What year was Gone with the Wind released?",
+        question: "What year was 'Gone with the Wind' released?",
         answers: ["1939", "1944", "1949", "1955"],
         values: [true, false, false, false],
         detail: "The original director, George Cukor, was fired 18 days into shooting and was quickly replaced by Victor Fleming (who'd also directed The Wizard of Oz). In the thick of production, Fleming allegedly experienced a mental breakdown, and after threatening to drive his car off a cliff, took time off. During the interim, Sam Wood took the reins until Fleming recovered from his exhaustion. The final tally? Cukor, 18 days, Fleming, 93 and Wood, 24.",
@@ -47,36 +47,34 @@ $(document).ready( function() {
     
     ]
   
-    // Very important for tracking questions. This will track the player's progress through the questions. When this value is equal to questions.length - 1 the score screen will appear
-    var currentQuestion = 0;
+    //Tracks the player's progress through the questions. 
+    var currentQuestion = 0; //current question
     var correct = 0; //records number of correct answers
     var wrong = 0; //records number of wrong answers
     var none = 0; //records unanswered (timed out) questions
   
-    // End variable area
-    //-----------------------------------------------------------------------------------
-    // Functions below
+    
   
     // On-click start function
     $("#start").on("click", function() {
      $("#start").remove();
-     displayQ();
+     displayQuestion();
     
     })
   
-  
-  
+   
     // This function will display the timer, question, and 
-    function displayQ() {
+    function displayQuestion() {
       // Removes the prior message
       $(".message-content").remove();
       $("blockquote").remove();
+      
 
-      // Create the html elements that will constitute the timer, question, and later, the answer area. These are all assigned to a proper variable name
+      // Create the html elements that will constitute the timer, question and answer area. 
       var questionArea = $("<div>");
       questionArea.attr("id", "question-area")
-      var timer = $("<h2>")
-      var question = $("<h2>")
+      var timer = $("<h2>").addClass("timer")
+      var question = $("<h2>").addClass("question")
   
       // Append elements to the content area, so they display properly
       questionArea.appendTo("#content")
@@ -84,13 +82,15 @@ $(document).ready( function() {
       question.appendTo(questionArea)
   
       // Set up the timer.
-      var time = 5;
-      timer.html("<h2>" + time + " seconds remaining</h2>")
+      var time = 20;
+      
+      
+      timer.html("<h2 class='theTime'>" + time  +"</h2>" + "<span class='timeText'> seconds remaining</span>")
       
       // Countdown function that will stop when the time hits 0
       var countDown = setInterval( function() {
         time--;
-        timer.html("<h2>" + time + " seconds remaining</h2>")
+        timer.html("<h2 class='theTime'>" + time  + "</h2>" + "<span class='timeText'> seconds remaining</span>")
   
         // If time reaches 0, the question times out, none increases in value, and the timedOut function is called
         if (time === 0) {
@@ -146,19 +146,19 @@ $(document).ready( function() {
   
     // This function will display the correct answer screen
     function displayCorrect() {
-      var cycle = setTimeout(displayQ, 3000)
+      var cycle = setTimeout(displayQuestion, 12000)
       var messageArea = $("<div>");    
       messageArea.addClass("message-content")
       // Declare content that will go into the messageArea
-      var winMessage = $("<h2>");
-      var detail = $("<h2>")
+      var winnerMsg = $("<h2>");
+      var detail = $("<h2 class='details'>")
       var image = $("<img>")
       // Append it all to the content container and add text and images
       messageArea.appendTo($("#content"));
-      winMessage.appendTo($(messageArea));
+      winnerMsg.appendTo($(messageArea));
       detail.appendTo($(messageArea))
       image.appendTo($(messageArea))
-      winMessage.text("Correct!");
+      winnerMsg.html("<span class='rightText'>I love the smell of napalm in the morning. It smells like your correct answer.</span>");
       detail.text(questions[currentQuestion].detail)
       image.attr("src", questions[currentQuestion].gif)
   
@@ -166,38 +166,38 @@ $(document).ready( function() {
       // If there are no questions left, then run this function to display gameOver
       if (currentQuestion === (questions.length - 1)) {
         clearTimeout(cycle);
-        var gameEnd = setTimeout( gameOver, 10000)
+        var gameEnd = setTimeout( gameOver, 12000)
       }
       currentQuestion++;
     };
     // This function will display the wrong answer screen
     function displayWrong() {
-      var cycle = setTimeout(displayQ, 3000);
+      var cycle = setTimeout(displayQuestion, 12000);
       var messageArea = $("<div>");
       messageArea.addClass("message-content")
       var lossMessage = $("<h2>");
-      var detail = $("<h2>")
+      var detail = $("<h2 class='details'>")
       var image = $("<img>")
       // Append it all to the content container and add text and images
       messageArea.appendTo($("#content"));
       lossMessage.appendTo(messageArea)
       detail.appendTo($(messageArea))
       image.appendTo($(messageArea))
-      lossMessage.html("Wrong! The right answer was: " + questions[currentQuestion].answers[questions[currentQuestion].values.indexOf(true)]);
+      lossMessage.html("<span class='wrongText'>Your ego is writing checks your body can’t cash. <br></br> The correct answer was: " + questions[currentQuestion].answers[questions[currentQuestion].values.indexOf(true)] + "</span>");
       detail.text(questions[currentQuestion].detail)
       image.attr("src", questions[currentQuestion].gif)
   
       // If there are no questions left, then run this function to display gameOver
       if (currentQuestion === (questions.length - 1)) {
         clearTimeout(cycle);
-        var gameEnd = setTimeout( gameOver, 10000)
+        var gameEnd = setTimeout( gameOver, 12000)
       }
       currentQuestion++;
     };
   
     // This will display the time out screen
     function timedOut() {
-      var cycle = setTimeout(displayQ, 10000);
+      var cycle = setTimeout(displayQuestion, 12000);
       var messageArea = $("<div>");
       messageArea.addClass("message-content")
       var lossMessage = $("<h2>");
@@ -208,14 +208,14 @@ $(document).ready( function() {
       lossMessage.appendTo(messageArea)
       detail.appendTo($(messageArea))
       image.appendTo($(messageArea))
-      lossMessage.html("You timed out! The right answer was: " + questions[currentQuestion].answers[questions[currentQuestion].values.indexOf(true)]);
+      lossMessage.html("<span class='timedText'>I feel the need – the need for speed. But obviously you don't. <br></br> The correct answer was: " + questions[currentQuestion].answers[questions[currentQuestion].values.indexOf(true)] + "</span>");
       detail.text(questions[currentQuestion].detail)
       image.attr("src", questions[currentQuestion].gif)
   
       // If there are no questions left, then run this function to display gameOver
       if (currentQuestion === (questions.length - 1)) { 
         clearTimeout(cycle);
-        var gameEnd = setTimeout( gameOver, 10000)
+        var gameEnd = setTimeout( gameOver, 12000)
       }
       currentQuestion++;
     };
@@ -229,17 +229,17 @@ $(document).ready( function() {
       var totalNone = $("<h3>")
       var restart = $("<button>")
       totalCorrect.appendTo($("#content"))
-      totalCorrect.html("You got " + correct + " correct!")
+      totalCorrect.html("<span class='rightText'>You got " + correct + " correct!</span>")
       totalIncorrect.appendTo("#content")
-      totalIncorrect.html("You got " + wrong + " wrong.")
+      totalIncorrect.html("<span class='wrongText'>You got " + wrong + " wrong.</span>")
       totalNone.appendTo("#content")
       
       // If block to determine if question or questions should be used
       if (none === 1) {
-        totalNone.html("You didn't answer " + none + " question.")
+        totalNone.html("<span class='timedText'>You didn't answer " + none + " question.</span>")
       }
       if (none > 1 || none === 0) {
-        totalNone.html("You didn't answer " + none + " questions.")
+        totalNone.html("<span class='timedText'>You didn't answer " + none + " questions.</span>")
       }
       
       
@@ -258,12 +258,11 @@ $(document).ready( function() {
         correct = 0; //records number of correct answers
         wrong = 0; //records number of wrong answers
         none = 0;
-        displayQ();
+        displayQuestion();
       })
   
     }
   
   })
-  
   
   

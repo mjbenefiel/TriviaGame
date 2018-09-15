@@ -15,7 +15,7 @@
 
 body {
    
-  font-family:Open Sans;
+  font-family: 'Open Sans', sans-serif;
     margin: 0;
     /* padding-bottom: 25px; */
     
@@ -49,7 +49,7 @@ body {
 
   .timer {
     font-weight: bold;
-    font-family:Open Sans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     width: 100%;
     border-top-left-radius: 25px;
@@ -59,6 +59,42 @@ body {
     padding-bottom: 25px;
     margin-top: 0px;
     margin-bottom: 25px
+  }
+
+  .theTime {
+   margin: auto;
+   font-weight: bold;
+   font-family: 'Open Sans', sans-serif;
+    font-size: 36px;
+   color: rgba(120, 192, 168, 0.472);
+
+  }
+
+  .timeText {
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    
+   color: rgba(218, 226, 223, 0.472);
+  }
+  .rightText {
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    
+   color:rgba(120, 192, 168, 0.472);
+  }
+
+  .wrongText {
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    
+   color: rgba(235, 142, 230, 0.425);
+  }
+
+  .timedText {
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    
+   color: rgba(232, 245, 56, 0.425);
   }
   
   img {
@@ -104,9 +140,27 @@ body {
 
     
   }
+
+  .restart {
+    font-family: 'Space Mono', monospace;
+    font-style: bold;
+    display: block;
+    margin: 25px auto;
+    padding: 2px 10px 2px 10px;
+    background-color:rgba(39, 73, 226, 0.856);
+    color: white;
+    font-size: 24px !important;
+    border-radius: 15px;
+    height: 95px;
+    width: 200px;
+    font-size: 48px !important;
+ 
+     
+   }
   
   #content {
     /* background-image: url("../images/noir.jpg"); */
+   
     background-size: 100% 100%;
     background-repeat: no-repeat; 
     position: relative;
@@ -146,13 +200,30 @@ body {
   }
   
 h2 {
-  font-family:Open Sans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.5em;
   padding-bottom: 10px;
 }
 
+.details {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  padding-bottom: 10px;
+  line-height:1.6;
+  color: rgba(214, 214, 214, 0.781)
+  
+}
+
+.question {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 35px;
+  font-weight: 700;
+
+}
+
   .message-content {
-    font-family:Open Sans;
+    font-family: 'Open Sans', sans-serif;
     font-style: italic;
     padding-left: 10px;
     padding-right: 10px;
@@ -166,7 +237,7 @@ blockquote{
   width:80%;
   margin: auto;
     
-  font-family:Open Sans;
+  font-family: 'Open Sans', sans-serif;
   font-style:italic;
   color: white;
   padding:10px 30px 0px 75px;
@@ -286,3 +357,53 @@ h1 span:after {
     opacity: 1;
   }
 }
+/* COUNTDOWN */
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(https://fonts.gstatic.com/s/robotocondensed/v16/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYobdNc.ttf) format('truetype');
+}
+body {
+  background-color: black;
+}
+#countdown {
+  font-family: 'Roboto Condensed', sans-serif;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -100px;
+  margin-top: -50px;
+  color: white;
+  font-size: 5em;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  /* solve for flicker problem */
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}
+#countdown.puffer {
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+  -webkit-transform: scale(1.6, 1.6);
+  -moz-transform: scale(1.6, 1.6);
+  -ms-transform: scale(1.6, 1.6);
+  -o-transform: scale(1.6, 1.6);
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -ms-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+}
+/* LESS Mixins */
