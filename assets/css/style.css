@@ -40,7 +40,6 @@ body {
     width: 100%;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    
     padding-top: 0;
     padding-bottom: 25px;
     margin-top: 0px;
@@ -51,7 +50,7 @@ body {
    margin: auto;
    font-weight: bold;
    font-family: 'Open Sans', sans-serif;
-    font-size: 36px;
+   font-size: 36px;
    color: rgba(120, 192, 168, 0.472);
 
   }
@@ -59,34 +58,30 @@ body {
   .timeText {
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
-    
-   color: rgba(218, 226, 223, 0.472);
+    color: rgba(218, 226, 223, 0.472);
   }
+
   .rightText {
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
-    
-   color:rgba(120, 192, 168, 0.472);
+    color:rgba(120, 192, 168, 0.472);
   }
 
   .wrongText {
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
-    
-   color: rgba(235, 142, 230, 0.425);
+    color: rgba(235, 142, 230, 0.425);
   }
 
   .timedText {
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
-    
-   color: rgba(232, 245, 56, 0.425);
+    color: rgba(232, 245, 56, 0.425);
   }
   
   img {
     height: 250px;
     width: 300px;
-    
     border-radius: 25px;
   }
   
@@ -105,7 +100,6 @@ body {
   
   button:hover {
     transform: scale(1.1);
-  
     box-shadow: 0 0 1rem #81D2C7;
     background-color: rgb(10, 102, 90);
     color: white;
@@ -116,13 +110,11 @@ body {
    border: none;
    margin: 50px 0px 0px 40px;
    border-radius:15px;
-
-    vertical-align: center;
-    
-    height: 95px;
-    width: 200px;
-    font-size: 48px !important;
-    font-family: 'Space Mono', monospace;
+   vertical-align: center;
+   height: 95px;
+   width: 200px;
+   font-size: 48px !important;
+   font-family: 'Space Mono', monospace;
 
     
   }
@@ -145,14 +137,11 @@ body {
    }
   
   #content {
-    
-   
     background-size: 100% 100%;
     background-repeat: no-repeat; 
     position: relative;
     color: white;
     height: 600px;
-    
     border-radius: 25px;
     margin: 50px auto;
     text-align: center;
@@ -162,7 +151,6 @@ body {
   
   #content::after {
     content: "";
-    
     background-size: 100% 100%; 
     background-repeat: no-repeat; 
     position: absolute;
@@ -178,9 +166,7 @@ body {
     font-family:Open Sans;
     font-style: italic;
     padding-left: 10px;
-    padding-right: 10px;
-    
-    
+    padding-right: 10px;    
    
   }
   
@@ -221,7 +207,6 @@ blockquote{
   font-size: 1.4em;
   width:80%;
   margin: auto;
-    
   font-family: 'Open Sans', sans-serif;
   font-style:italic;
   color: white;
