@@ -17,7 +17,7 @@ body {
    
   font-family: 'Open Sans', sans-serif;
     margin: 0;
-    /* padding-bottom: 25px; */
+    
     
   }
   .container-fluid {
@@ -25,21 +25,7 @@ body {
     padding-right: 0;
     border: none;
   }
-  
-/* h1 {
-    font-weight: bold;
-    font-family: 'Limelight', cursive;
-    width: 100%;
-     border-top-left-radius: 25px; 
-     border-top-right-radius: 25px; 
-     border-bottom: 5px white solid;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-   
-    
-  } */
+
 
 .wrapper {
   padding-top: 135px;
@@ -54,7 +40,7 @@ body {
     width: 100%;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    /* border-bottom: 5px #8b1616 solid; */
+    
     padding-top: 0;
     padding-bottom: 25px;
     margin-top: 0px;
@@ -100,7 +86,7 @@ body {
   img {
     height: 250px;
     width: 300px;
-    /* border: 2px #416788 solid; */
+    
     border-radius: 25px;
   }
   
@@ -119,7 +105,7 @@ body {
   
   button:hover {
     transform: scale(1.1);
-    /* border: 1px blue solid; */
+  
     box-shadow: 0 0 1rem #81D2C7;
     background-color: rgb(10, 102, 90);
     color: white;
@@ -132,7 +118,7 @@ body {
    border-radius:15px;
 
     vertical-align: center;
-    /* transform: translate(0, 150%); */
+    
     height: 95px;
     width: 200px;
     font-size: 48px !important;
@@ -159,25 +145,24 @@ body {
    }
   
   #content {
-    /* background-image: url("../images/noir.jpg"); */
+    
    
     background-size: 100% 100%;
     background-repeat: no-repeat; 
     position: relative;
     color: white;
     height: 600px;
-    /* border: 5px #8b1616 solid; */
+    
     border-radius: 25px;
     margin: 50px auto;
     text-align: center;
-    /* box-shadow: 3px 3px 20px 6px #ccc !important; */
-    /* padding-bottom: 20px; */
+    
     
   }
   
   #content::after {
     content: "";
-    /* background-image: url("../images/noir.jpg");  */
+    
     background-size: 100% 100%; 
     background-repeat: no-repeat; 
     position: absolute;
@@ -270,8 +255,6 @@ blockquote span{
 }
 
 
-
-
   /* For smaller screens */
   @media screen and (max-width: 640px) {
     #content {
@@ -285,7 +268,7 @@ blockquote span{
   }
 
  
-/*  Basic Title  */
+/*  Basic Title Animation Effect  */
 h1 {
   position: absolute;
   top: 0;
@@ -357,53 +340,3 @@ h1 span:after {
     opacity: 1;
   }
 }
-/* COUNTDOWN */
-
-@font-face {
-  font-family: 'Roboto Condensed';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(https://fonts.gstatic.com/s/robotocondensed/v16/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYobdNc.ttf) format('truetype');
-}
-body {
-  background-color: black;
-}
-#countdown {
-  font-family: 'Roboto Condensed', sans-serif;
-  width: 200px;
-  height: 100px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -100px;
-  margin-top: -50px;
-  color: white;
-  font-size: 5em;
-  text-align: center;
-  font-weight: bold;
-  font-style: italic;
-  -webkit-opacity: 1;
-  -moz-opacity: 1;
-  opacity: 1;
-  -webkit-transition: opacity 0.4s ease;
-  -moz-transition: opacity 0.4s ease;
-  -ms-transition: opacity 0.4s ease;
-  -o-transition: opacity 0.4s ease;
-  /* solve for flicker problem */
-  -webkit-perspective: 1000;
-  -webkit-backface-visibility: hidden;
-}
-#countdown.puffer {
-  -webkit-opacity: 0;
-  -moz-opacity: 0;
-  opacity: 0;
-  -webkit-transform: scale(1.6, 1.6);
-  -moz-transform: scale(1.6, 1.6);
-  -ms-transform: scale(1.6, 1.6);
-  -o-transform: scale(1.6, 1.6);
-  -webkit-transition: all 0.4s ease-out;
-  -moz-transition: all 0.4s ease-out;
-  -ms-transition: all 0.4s ease-out;
-  -o-transition: all 0.4s ease-out;
-}
-/* LESS Mixins */

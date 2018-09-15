@@ -1,6 +1,6 @@
 # TriviaGame
 
-Project: Trivia Game | American History
+Project: jQuery Timed Trivia Game | Tinseltown Trivia: Classic Movies
 
 Author: Michael Benefiel
 
@@ -12,58 +12,70 @@ Feel free to use some or all of this code if you're trying to complete a similar
 
 THE PROJECT
 
-Instructions/guide
+Bootstrap 3.3.7
+jQuery 3.3.1
 
-- Find background
+- Questions variable to declare all questions, answers, values, details, and images
 
-- Find game area theme
+- currentQuestion variable to track current question in trivia game
 
-- Game screen/area stays same throughout game
+- correct variable to track correct answers
 
-- Start screen with start button
+- wrong variable to track wrong answers
 
-- Display one multiple choice question per screen
-    - give four potential answers
-    - display question until time runs out
-    - congratulations screen for correct answer
-    - incorrect screen and correct answer displays if answered wrong
-    - no answer chosen displays out of time screen
-        - can add in graphics, animations with these screens
+- none variable to track timed out question/answers
+
+- on click function to start game
+
+- displayQuestion function to display timer, question and answer area
+
+    - remove message content from previous screen
+
+    - remove blockquote from previous screen
+
+    - create html elements for timer and question
+
+        - append those elements to content area
     
-- Move on to next question with no user input after answer is chosen and screen displayed
-    - Maybe 5 - 10 sec transition
+    - set up timer variable (equal to 20 seconds)
 
-- When game is complete, it shows correct/incorrect/unanswered answers
-    - IE, correct: 4 | incorrect: 3
-    - Start over button included does not reload the page -- it resets the game
+    - display time remaining
+
+    - countdown function
+
+    - display function by pulling from for loop
+
+    - for loop for answers
+
+        - create button div for answers
+
+            - assign value to each answer
+
+        - append answers to question area
+
+    - on click function for answer buttons
+
+        - if statement for correct answer
+
+        - if statement for incorrect answer
+
+    - displayCorrect function to display correct answer response
+
+    - displayWrong function to display incorrect answer response
+
+    - timedOut function to display time out answer response
+
+    - if statement that will display gameOver screen once questions are finished
+
+    - gameOver function to display screen with # of correct, incorrect and timedout response. Restart button included on this screen.
+
+    - if statement to determine if plural form of question should be used with the timed out responses logged
+
+    - restart button attributes
+
+    - on click function for restart button
+
+        - goes back to displayQuestion function
 
 
-Initial pseudo code: 09072018
-
-- Question object
-    - Question
-    - Answer
- 
- - Start Game function
- - Reset function (start over)
-
- - start onclick function
-
- - timer function (setTimeout or similar)
-
-
-
- - question 1 - 5
-    - if correct answer guessed...
-        - display certain text and image
-    - else if incorrect answer guessed...
-        - display certain text, correct answer and image
-    - else if time runs out...
-        - display certain text, correct answer and image
-    
-- Make sure to save correct/incorrect/not answered guesses
-
-- end of game function
-    - Display correct / incorrect / unanswered
-    - start over button
     
