@@ -1,19 +1,25 @@
-# TriviaGame
-
-Project: jQuery Timed Trivia Game | Tinseltown Trivia: Classic Movies
+<h1>Tinseltown Trivia: Classic Movies</h1>
+<hr></hr>
 
 Author: Michael Benefiel
 
-Why I created this project:
-
-Homework for the University of Kansas Coding Boot Camp, and to develop basic JS skills.
-
 Feel free to use some or all of this code if you're trying to complete a similar project.
+<hr></hr>
 
-THE PROJECT
+<h3> App screenshot </h3>
 
-Bootstrap 3.3.7
-jQuery 3.3.1
+![alt text](https://raw.githubusercontent.com/mjbenefiel/TriviaGame/master/assets/images/readme.jpg "Tinseltown Trivia")
+
+<hr></hr>
+
+<h2>Technology used</h2>
+
+[Bootstrap 3.3.7](http://getbootstrap.com/)
+
+[jQuery 3.3.1](https://jquery.com/)
+<hr></hr>
+
+<h4>Below is a thorough, but not comprehensive, step-by-step process of how I got the app running in terms of code</h4>
 
 - Questions variable to declare all questions, answers, values, details, and images
 
