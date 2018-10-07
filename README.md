@@ -1,5 +1,6 @@
 <h1>Tinseltown Trivia: Classic Movies</h1>
 <hr></hr>
+
 Author: Michael Benefiel
 
 Feel free to use some or all of this code if you're trying to complete a similar project.
