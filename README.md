@@ -13,7 +13,7 @@ Feel free to use some or all of this code if you're trying to complete a similar
 <hr></hr>
 
 <h2> How it works </h2>
-Hit the "begin button". Read the question. Answer the question by clicking the appropriate button. Repeat until game ends.
+Hit the "begin" button. Read the question. Answer the question by clicking the appropriate button. Repeat until game ends.
 <hr></hr>
 
 <h2>Technology used</h2>
