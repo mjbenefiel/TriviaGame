@@ -16,8 +16,6 @@ Feel free to use some or all of this code if you're trying to complete a similar
 This timed trivia app utilizes jQuery for a seamless user experience, and tests your knowledge of classic Hollywood films.
 <hr></hr>
 
-<hr></hr>
-
 <h2> How it works </h2>
 Hit the "begin" button. Read the question. Answer the question by clicking the appropriate button. Repeat until game ends.
 <hr></hr>
