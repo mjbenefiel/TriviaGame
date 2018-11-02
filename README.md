@@ -1,4 +1,6 @@
 <h1>Tinseltown Trivia: Classic Movies</h1>
+
+Live version: https://mjbenefiel.github.io/TriviaGame/
 <hr></hr>
 
 Author: Michael Benefiel
@@ -10,6 +12,14 @@ Feel free to use some or all of this code if you're trying to complete a similar
 
 ![alt text](https://raw.githubusercontent.com/mjbenefiel/TriviaGame/master/assets/images/readme.jpg "Tinseltown Trivia")
 
+<hr></hr>
+
+<h2> Project overview</h2>
+This timed trivia app utilizes jQuery for a seamless user experience, and tests your knowledge of classic Hollywood films.
+<hr></hr>
+
+<h2> How it works </h2>
+Hit the "begin" button. Read the question. Answer the question by clicking the appropriate button. Repeat until game ends.
 <hr></hr>
 
 <h2>Technology used</h2>
